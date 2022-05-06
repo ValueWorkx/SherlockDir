@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SherlockDir (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SherlockDir (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
