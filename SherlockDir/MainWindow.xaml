@@ -1,13 +1,82 @@
-﻿<Window
-    x:Class="SherlockDir.MainWindow"
+﻿   <Window
+    x:Class="SherlockDir.MainWindow" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SherlockDir"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+
+
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <MenuBar Grid.Row="0" VerticalAlignment="Top" >
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="Add" Icon="Add" />
+                <MenuFlyoutItem Text="Save" Icon="Save"/>
+                <MenuFlyoutItem Text="Settings" Icon="Setting"/>
+                <MenuFlyoutItem Text="Exit" />
+            </MenuBarItem>
+
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="About"/>
+            </MenuBarItem>
+        </MenuBar>
+
+
+        <CommandBar x:Name="PrimaryCommandBar" IsOpen="false" DefaultLabelPosition="Right" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0">
+
+            <!--<AppBarButton x:Name="addButton" Icon="Add" Label="Add" Click="OnElementClicked"/>
+            <AppBarButton x:Name="saveButton" Icon="Save" Label="Save" Click="OnElementClicked"/>
+            <AppBarButton x:Name="settingButton" Icon="Setting" Label="Settings" Click="OnElementClicked"/>
+            <AppBarSeparator />-->
+
+            <AppBarButton x:Name="btnScanFolder" Icon="SolidStar" Label="Scan Folder" Click="OnScanFolderClicked" />
+
+
+        </CommandBar>
+
+        <controls:DataGrid x:Name="dataGrid"
+            Grid.Row="2" Grid.Column="0"
+        Margin="12"
+        VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
+        HorizontalScrollBarVisibility="Visible"
+        VerticalScrollBarVisibility="Visible"
+        AlternatingRowBackground="Transparent"
+        AlternatingRowForeground="Gray"
+        AreRowDetailsFrozen="False"
+        AreRowGroupHeadersFrozen="True"
+        AutoGenerateColumns="True"
+        CanUserSortColumns="False"
+        CanUserReorderColumns="True"
+        CanUserResizeColumns="True"
+        ColumnHeaderHeight="32"
+        MaxColumnWidth="400"
+        FrozenColumnCount="0"
+        GridLinesVisibility="None"
+        HeadersVisibility="Column"
+        IsReadOnly="False"
+        RowDetailsVisibilityMode="Collapsed"
+        SelectionMode="Extended"
+        RowGroupHeaderPropertyNameAlternative="Range">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="Name"  Tag="Name" />
+                <controls:DataGridComboBoxColumn Header="Size"  Tag="Size" />
+                <controls:DataGridTextColumn Header="Ext" Tag="Ext" />
+                <controls:DataGridTextColumn Header="Type" Tag="Type" />
+                <controls:DataGridTextColumn Header="FolderName"  Tag="FolderName" />
+
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+
+    </Grid>
 </Window>

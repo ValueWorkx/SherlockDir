@@ -33,6 +33,7 @@ namespace SherlockDir
         public App()
         {
             this.InitializeComponent();
+
         }
 
         /// <summary>
