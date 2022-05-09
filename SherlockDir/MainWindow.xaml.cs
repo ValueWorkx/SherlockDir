@@ -28,11 +28,12 @@ namespace SherlockDir
     public sealed partial class MainWindow : Window
     {
         private Windows.Storage.Pickers.FolderPicker folderPicker;
+        private MainViewModel viewModel;
         public MainWindow()
         {
             this.InitializeComponent();
-            
-
+            viewModel = new MainViewModel();
+     
         }
 
         private void OnElementClicked(object sender, RoutedEventArgs e)
@@ -57,7 +58,7 @@ namespace SherlockDir
             StorageFolder folder = await folderPicker.PickSingleFolderAsync();
             if(folder !=null)
             {
-                Debug.Write(folder.DisplayName);
+                viewModel.GetFiles(folder.Path);
             }
             else
             {
