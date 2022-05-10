@@ -66,5 +66,10 @@ namespace SherlockDir
             }
 
         }
+
+        private async void OnClearGridClicked(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = viewModel.ClearFiles();
+        }
     }
 }

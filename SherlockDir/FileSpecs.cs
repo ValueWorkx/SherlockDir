@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SherlockDir
 {
-    internal class FileSpecs
+    public class FileSpecs
     {
         public int Size { get; set; }
         public string Ext { get; set; }

@@ -28,6 +28,13 @@ namespace SherlockDir
             get { return files; }
            
         }
+
+        public ObservableCollection<FileSpecs> ClearFiles()
+        {
+            files = new ObservableCollection<FileSpecs>();
+            return files;
+            
+        }
     }
 }
 

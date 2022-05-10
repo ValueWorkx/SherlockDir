@@ -40,6 +40,7 @@
             <AppBarSeparator />-->
 
             <AppBarButton x:Name="btnScanFolder" Icon="SolidStar" Label="Scan Folder" Click="OnScanFolderClicked" />
+            <AppBarButton x:Name="clearButton" Icon="Clear" Label="Clear Grid" Click="OnClearGridClicked"/>
 
 
         </CommandBar>
@@ -50,12 +51,10 @@
         VerticalAlignment="Top" HorizontalAlignment="Stretch"
         HorizontalScrollBarVisibility="Visible"
         VerticalScrollBarVisibility="Visible"
-        AlternatingRowBackground="Transparent"
-        AlternatingRowForeground="Gray"
         AreRowDetailsFrozen="False"
         AreRowGroupHeadersFrozen="True"
         AutoGenerateColumns="False"
-        CanUserSortColumns="False"
+        CanUserSortColumns="true"
         CanUserReorderColumns="True"
         CanUserResizeColumns="True"
         ColumnHeaderHeight="32"
@@ -72,10 +71,10 @@
 
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="Name"  Tag="Name" Width="3*" Binding="{Binding Name}" />
-                <controls:DataGridComboBoxColumn Header="Size"  Tag="Size" Width="*" Binding="{Binding Length}"/>
-                <controls:DataGridTextColumn Header="Ext" Tag="Ext" Width="*"/>
-                <controls:DataGridTextColumn Header="Type" Tag="Type" Width="*"/>
-                <controls:DataGridTextColumn Header="FolderName"  Tag="FolderName" Width="5*"/>
+                <controls:DataGridComboBoxColumn Header="Size"  Tag="Size" Width="*" Binding="{Binding Size}"/>
+                <controls:DataGridTextColumn Header="Ext" Tag="Ext" Width="*" Binding="{Binding Ext}" />
+                <controls:DataGridTextColumn Header="Type" Tag="Type" Width="*" Binding="{Binding Type}"/>
+                <controls:DataGridTextColumn Header="FolderName"  Tag="FolderName" Width="5*" Binding="{Binding FolderName}"/>
 
             </controls:DataGrid.Columns>
         </controls:DataGrid>
