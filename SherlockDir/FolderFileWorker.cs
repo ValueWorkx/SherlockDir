@@ -9,24 +9,38 @@ namespace SherlockDir
 {
     internal class FolderFileWorker
     {
-
-        internal List<FileSpecs> FindFiles(string path)
+        private FileFilter fileFilter;
+        internal List<FileSpecs> FindFiles(string path, string filterResult, string selectedFilter)
         {
             List<FileSpecs> temp = new List<FileSpecs>();
+
+            //Create FilterObject
+            if(filterResult!="" && selectedFilter!=null)
+            {
+                fileFilter = new FileFilter(filterResult, selectedFilter);
+            }
+            //Going through all the files.Filtering if filter is setup.
             try
             {
                 string pathName = path;
                 string[] files = Directory.GetFiles(pathName, "*", SearchOption.AllDirectories);
-                //Needs to change as there can be unauthorized access to some folders
+          
 
                 foreach (string file in files)
                 {
-                    
-                    temp.Add(ConvertToFileSpec(new FileInfo(file)));
+                    FileInfo info = new FileInfo(file);
+                    if (fileFilter!= null)
+                    {
+                        if(fileFilter.IsFileInFilter(info))
+                            temp.Add(ConvertToFileSpec(info));
+                    }
+                    else
+                        temp.Add(ConvertToFileSpec(info));
                 }
             }
             catch (UnauthorizedAccessException err) { }
 
+            fileFilter = null;
             return temp;
         }
 
@@ -49,6 +63,7 @@ namespace SherlockDir
 
             return ext;
         }
+
 
         private string GetFileType(string ext)
         {

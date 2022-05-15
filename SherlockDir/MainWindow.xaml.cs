@@ -32,6 +32,9 @@ namespace SherlockDir
         public MainWindow()
         {
             this.InitializeComponent();
+
+            Title = "Sherlock Directory";
+
             viewModel = new MainViewModel();
      
         }
@@ -58,7 +61,10 @@ namespace SherlockDir
             StorageFolder folder = await folderPicker.PickSingleFolderAsync();
             if(folder !=null)
             {
-                viewModel.GetFiles(folder.Path);
+                if(txtFilter.Text != "")
+                    viewModel.GetFiles(folder.Path, txtFilter.Text, cmbFilter.SelectedValue.ToString());
+                else
+                    viewModel.GetFiles(folder.Path, txtFilter.Text, null);
             }
             else
             {

@@ -14,9 +14,9 @@ namespace SherlockDir
             worker = new FolderFileWorker();
         }
 
-        public void GetFiles(string path)
+        public void GetFiles(string path, string filterText, string selectedFilter)
         {
-            List<FileSpecs> fileList = worker.FindFiles(path);
+            List<FileSpecs> fileList = worker.FindFiles(path, filterText, selectedFilter);
             foreach(FileSpecs file in fileList)
             {
                 files.Add(file);
